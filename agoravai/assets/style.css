@@ -1,0 +1,391 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: 'Manrope', sans-serif;
+    background-image: url('https://ik.imagekit.io/tolkian/d143d81239f4360094d76b8d9093cbeecde2b3d6_aVnz9Flej.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Wrapper para o celular e o botão de arrastar */
+.phone-wrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Container principal do celular */
+.phone-container {
+    width: 280px;
+    height: 55vh;
+    min-height: 500px;
+    border-radius: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.43);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.38) 78.37%);
+    backdrop-filter: blur(3.7px);
+    -webkit-backdrop-filter: blur(3.7px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    transition: padding 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* Remove o padding quando um app está aberto */
+.phone-container.app-mode {
+    padding: 0;
+}
+
+/* A tela do celular */
+.screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+.homescreen {
+    overflow-y: auto;
+}
+.homescreen::-webkit-scrollbar, .whatsapp-messages::-webkit-scrollbar { display: none; }
+.homescreen, .whatsapp-messages { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Ícones dos aplicativos */
+.app-icon { display: flex; justify-content: center; align-items: center; cursor: pointer; }
+.app-icon img { width: 56px; height: 56px; border-radius: 14px; transition: transform 0.2s ease; }
+.app-icon:hover img { transform: scale(1.1); }
+
+/* Ícones do dock do rodapé */
+.footer-dock .app-icon img {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+}
+
+/* Estilo para o dock do rodapé */
+.footer-dock {
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.27);
+    backdrop-filter: blur(3.7px);
+    -webkit-backdrop-filter: blur(3.7px);
+}
+
+/* Círculo para arrastar o celular */
+.drag-handle {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    border: 1px solid #FFF;
+    background: rgba(255, 255, 255, 0.77);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Telas de App */
+.app-screen {
+    /* Remova position: absolute e inset: 0 para evitar corte e sobreposição */
+    /* position: absolute; */
+    /* inset: 0; */
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 25px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.phone-container.app-mode .app-screen {
+    border-radius: 36px;
+}
+
+/* WhatsApp: garantir que ocupe toda a tela e footer fique fixo */
+#whatsapp-screen,
+#whatsapp-chat-screen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+#whatsapp-screen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+#whatsapp-message-list {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#whatsapp-message-list::-webkit-scrollbar {
+    display: none;
+}
+
+.whatsapp-contact {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.whatsapp-contact:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.whatsapp-contact img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.whatsapp-contact-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.whatsapp-message-preview {
+    font-size: 0.75rem;
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.whatsapp-message-counter {
+    background-color: #25D366;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    text-align: center;
+}
+
+.whatsapp-message-time {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+#whatsapp-chat-screen {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+#whatsapp-screen > footer,
+#whatsapp-chat-screen > footer {
+    margin-top: auto;
+    position: relative;
+    width: 100%;
+    background: white;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    z-index: 2;
+    display: block;
+}
+
+#whatsapp-screen main,
+#whatsapp-chat-screen main {
+    flex: 1 1 0%;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#whatsapp-chat-screen main {
+    background: transparent;
+}
+
+#whatsapp-chat-screen .home-button,
+#whatsapp-screen .home-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0.5rem;
+    z-index: 10;
+}
+
+/* Garante que o chat-messages ocupe todo espaço disponível */
+#chat-messages {
+    flex: 1 1 0%;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos específicos do WhatsApp */
+.whatsapp-contact-name {
+    color: #000;
+    font-family: Manrope;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.408px;
+}
+.whatsapp-message-preview {
+    color: #000;
+    font-family: Manrope;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.078px;
+    max-width: 150px;
+}
+.whatsapp-message-counter {
+    color: #000;
+    font-family: Inter;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 999px;
+    background: rgba(54, 255, 47, 0.46);
+}
+.whatsapp-message-time {
+    color: rgba(0, 0, 0, 0.24);
+    font-family: Inter;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.whatsapp-contact {
+    position: relative;
+}
+.whatsapp-divider {
+    position: absolute;
+    bottom: 0;
+    left: 48px;
+    right: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.04);
+}
+.home-button {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6rem;
+    height: 0.375rem;
+    background-color: #A0A0A0;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+.py-4 {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+.w-7 {
+    width: 1.55rem;
+}
+.h-7 {
+    height: 1.55rem;
+}
+
+/* Correções para mensagens do chat */
+#chat-messages .flex div {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+}
+
+/* Melhorar alinhamento de data e check */
+#chat-messages .flex div .flex.items-center {
+    gap: 4px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-content: flex-end;
+    width: auto;
+}
+
+#chat-messages .flex div .flex.items-center span {
+    font-size: 11px;
+    line-height: 1;
+}
+
+#chat-messages .flex div .flex.items-center svg {
+    flex-shrink: 0;
+}
+
+/* Container das mensagens - bloquear scroll horizontal */
+#chat-messages {
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#chat-messages::-webkit-scrollbar {
+    display: none;
+}
+
+/* Aplicar também aos outros containers de mensagens */
+.whatsapp-messages {
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.whatsapp-messages::-webkit-scrollbar {
+    display: none;
+}
+
+/* Bloquear scroll horizontal global */
+body, html {
+    overflow-x: hidden;
+}
+
+/* Aumentar altura do footer e subir elementos */
+#whatsapp-chat-screen footer {
+    padding: 0.5rem 1rem 2rem 1rem;
+}
+
+/* Aumentar padding lateral da barra de status */
+.absolute.top-0.left-0.right-0.px-4 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+/* Melhorar posicionamento da home button */
